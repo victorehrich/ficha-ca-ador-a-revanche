@@ -339,8 +339,31 @@ function init() {
     window.print();
   });
 
-  /* tentar carregar do localStorage ao abrir */
+  /* Antes de imprimir: expandir todos os textareas para mostrar conteúdo completo */
+  window.addEventListener('beforeprint', expandForPrint);
+  window.addEventListener('afterprint', collapseAfterPrint);
+
+  /* carregar ficha salva ao abrir */
   loadFromLS();
+}
+
+const _printOriginalHeights = new Map();
+
+function expandForPrint() {
+  document.querySelectorAll('textarea').forEach(el => {
+    _printOriginalHeights.set(el, el.style.height);
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+    el.style.overflow = 'visible';
+  });
+}
+
+function collapseAfterPrint() {
+  document.querySelectorAll('textarea').forEach(el => {
+    el.style.height = _printOriginalHeights.get(el) || '';
+    el.style.overflow = '';
+  });
+  _printOriginalHeights.clear();
 }
 
 document.addEventListener('DOMContentLoaded', init);

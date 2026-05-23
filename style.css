@@ -398,13 +398,25 @@ input[type=number]::-webkit-inner-spin-button { display: none; }
   .logo-sub  { color: rgba(255,255,255,0.8) !important; }
   .header-title { font-size: 16px !important; color: #fff !important; }
 
-  /* cards com borda leve */
+  /* cards: sem break-inside forçado — campos longos precisam cruzar páginas */
   .card {
     background: #fff !important;
     border: 0.5px solid #ddd !important;
     padding: 10px 14px;
-    break-inside: avoid;
+    break-inside: auto;
+    overflow: visible !important;
   }
+
+  /* blocos que cabem em menos de meia página: evitar corte */
+  .sheet-header,
+  .tracks-card,
+  .attr-group,
+  .track-item,
+  .attr-row,
+  .skill-row,
+  .trunfo-row,
+  .qual-row,
+  .equip-row { break-inside: avoid; }
 
   .section-title {
     color: #c05a10 !important;
@@ -414,7 +426,7 @@ input[type=number]::-webkit-inner-spin-button { display: none; }
 
   label { color: #888 !important; font-size: 9px !important; }
 
-  /* inputs: remover fundo, mostrar só o valor e uma linha */
+  /* inputs e textareas: transparentes, altura automática, sem corte */
   input[type=text],
   input[type=number],
   textarea {
@@ -425,6 +437,12 @@ input[type=number]::-webkit-inner-spin-button { display: none; }
     color: #111 !important;
     font-size: 11px !important;
     padding: 2px 4px !important;
+    /* expande para mostrar todo o conteúdo — JS seta height via scrollHeight */
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
   }
 
   /* dots: círculos com cor sólida */
