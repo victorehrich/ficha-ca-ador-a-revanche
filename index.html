@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caçador: A Revanche — Ficha de Personagem</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="noise"></div>
+
+<div class="sheet-wrapper">
+
+  <!-- HEADER -->
+  <header class="sheet-header">
+    <div class="header-logo">
+      <span class="logo-main">CAÇADOR</span>
+      <span class="logo-sub">A REVANCHE</span>
+    </div>
+    <h1 class="header-title">Ficha de Personagem</h1>
+    <div class="header-actions">
+      <button class="btn btn-icon" id="btn-save" title="Salvar no navegador">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17,21 17,13 7,13 7,21"/><polyline points="7,3 7,8 15,8"/></svg>
+        Salvar
+      </button>
+      <button class="btn btn-icon btn-primary" id="btn-export" title="Baixar JSON">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Baixar JSON
+      </button>
+      <label class="btn btn-icon" id="btn-import-label" title="Carregar JSON">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Carregar JSON
+        <input type="file" id="btn-import" accept=".json" style="display:none">
+      </label>
+    </div>
+  </header>
+
+  <div id="status-bar" class="status-bar"></div>
+
+  <!-- IDENTIDADE -->
+  <section class="card" id="sec-identidade">
+    <div class="card-row three">
+      <div class="field"><label>Nome</label><input type="text" id="nome" placeholder="—"></div>
+      <div class="field"><label>Conceito</label><input type="text" id="conceito" placeholder="—"></div>
+      <div class="field"><label>Credo</label><input type="text" id="credo" placeholder="—"></div>
+    </div>
+    <div class="card-row three">
+      <div class="field"><label>Célula</label><input type="text" id="celula" placeholder="—"></div>
+      <div class="field"><label>Ambição</label><input type="text" id="ambicao" placeholder="—"></div>
+      <div class="field"><label>Desejo</label><input type="text" id="desejo" placeholder="—"></div>
+    </div>
+    <div class="card-row two">
+      <div class="field"><label>Ímpeto</label><input type="text" id="impeto" placeholder="—"></div>
+      <div class="field"><label>Redenção</label><input type="text" id="redencao" placeholder="—"></div>
+    </div>
+  </section>
+
+  <!-- ATRIBUTOS -->
+  <section class="card">
+    <h2 class="section-title">Atributos</h2>
+    <div class="attrs-grid">
+      <div class="attr-group">
+        <div class="attr-group-label">Físicos</div>
+        <div class="attr-row"><span>Força</span><div class="dots" data-key="attr_forca" data-max="5"></div></div>
+        <div class="attr-row"><span>Destreza</span><div class="dots" data-key="attr_destreza" data-max="5"></div></div>
+        <div class="attr-row"><span>Vigor</span><div class="dots" data-key="attr_vigor" data-max="5"></div></div>
+      </div>
+      <div class="attr-group">
+        <div class="attr-group-label">Sociais</div>
+        <div class="attr-row"><span>Carisma</span><div class="dots" data-key="attr_carisma" data-max="5"></div></div>
+        <div class="attr-row"><span>Manipulação</span><div class="dots" data-key="attr_manipulacao" data-max="5"></div></div>
+        <div class="attr-row"><span>Autocontrole</span><div class="dots" data-key="attr_autocontrole" data-max="5"></div></div>
+      </div>
+      <div class="attr-group">
+        <div class="attr-group-label">Mentais</div>
+        <div class="attr-row"><span>Inteligência</span><div class="dots" data-key="attr_inteligencia" data-max="5"></div></div>
+        <div class="attr-row"><span>Raciocínio</span><div class="dots" data-key="attr_raciocinio" data-max="5"></div></div>
+        <div class="attr-row"><span>Determinação</span><div class="dots" data-key="attr_determinacao" data-max="5"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACKS -->
+  <section class="card tracks-card">
+    <div class="track-item">
+      <div class="track-label">Vitalidade</div>
+      <div class="track-boxes" data-key="track_vitalidade" data-max="10"></div>
+    </div>
+    <div class="track-item">
+      <div class="track-label">Força de Vontade</div>
+      <div class="track-boxes" data-key="track_fv" data-max="10"></div>
+    </div>
+    <div class="track-item">
+      <div class="track-label">Desespero</div>
+      <div class="track-boxes" data-key="track_desespero" data-max="1"></div>
+    </div>
+  </section>
+
+  <!-- HABILIDADES -->
+  <section class="card">
+    <h2 class="section-title">Habilidades</h2>
+    <div class="skills-grid">
+      <div class="skill-row"><span>Armas Brancas</span><div class="dots" data-key="skill_armas_brancas" data-max="5"></div></div>
+      <div class="skill-row"><span>Finanças</span><div class="dots" data-key="skill_financas" data-max="5"></div></div>
+      <div class="skill-row"><span>Ofícios</span><div class="dots" data-key="skill_oficios" data-max="5"></div></div>
+      <div class="skill-row"><span>Armas de Fogo</span><div class="dots" data-key="skill_armas_fogo" data-max="5"></div></div>
+      <div class="skill-row"><span>Furtividade</span><div class="dots" data-key="skill_furtividade" data-max="5"></div></div>
+      <div class="skill-row"><span>Percepção</span><div class="dots" data-key="skill_percepcao" data-max="5"></div></div>
+      <div class="skill-row"><span>Atletismo</span><div class="dots" data-key="skill_atletismo" data-max="5"></div></div>
+      <div class="skill-row"><span>Intimidação</span><div class="dots" data-key="skill_intimidacao" data-max="5"></div></div>
+      <div class="skill-row"><span>Performance</span><div class="dots" data-key="skill_performance" data-max="5"></div></div>
+      <div class="skill-row"><span>Briga</span><div class="dots" data-key="skill_briga" data-max="5"></div></div>
+      <div class="skill-row"><span>Investigação</span><div class="dots" data-key="skill_investigacao" data-max="5"></div></div>
+      <div class="skill-row"><span>Persuasão</span><div class="dots" data-key="skill_persuasao" data-max="5"></div></div>
+      <div class="skill-row"><span>Ciência</span><div class="dots" data-key="skill_ciencia" data-max="5"></div></div>
+      <div class="skill-row"><span>Ladroagem</span><div class="dots" data-key="skill_ladroagem" data-max="5"></div></div>
+      <div class="skill-row"><span>Política</span><div class="dots" data-key="skill_politica" data-max="5"></div></div>
+      <div class="skill-row"><span>Condução</span><div class="dots" data-key="skill_conducao" data-max="5"></div></div>
+      <div class="skill-row"><span>Liderança</span><div class="dots" data-key="skill_lideranca" data-max="5"></div></div>
+      <div class="skill-row"><span>Sagacidade</span><div class="dots" data-key="skill_sagacidade" data-max="5"></div></div>
+      <div class="skill-row"><span>Empatia com Animais</span><div class="dots" data-key="skill_empatia_animais" data-max="5"></div></div>
+      <div class="skill-row"><span>Manha</span><div class="dots" data-key="skill_manha" data-max="5"></div></div>
+      <div class="skill-row"><span>Sobrevivência</span><div class="dots" data-key="skill_sobrevivencia" data-max="5"></div></div>
+      <div class="skill-row"><span>Erudição</span><div class="dots" data-key="skill_erudicao" data-max="5"></div></div>
+      <div class="skill-row"><span>Medicina</span><div class="dots" data-key="skill_medicina" data-max="5"></div></div>
+      <div class="skill-row"><span>Subterfúgio</span><div class="dots" data-key="skill_subterfugio" data-max="5"></div></div>
+      <div class="skill-row"><span>Etiqueta</span><div class="dots" data-key="skill_etiqueta" data-max="5"></div></div>
+      <div class="skill-row"><span>Ocultismo</span><div class="dots" data-key="skill_ocultismo" data-max="5"></div></div>
+      <div class="skill-row"><span>Tecnologia</span><div class="dots" data-key="skill_tecnologia" data-max="5"></div></div>
+    </div>
+  </section>
+
+  <!-- TRUNFOS -->
+  <section class="card">
+    <h2 class="section-title">Trunfos e Distinções</h2>
+    <div class="trunfos-grid" id="trunfos-container">
+      <!-- 9 rows geradas por JS -->
+    </div>
+  </section>
+
+  <!-- PILARES / PRINCÍPIOS / CREDO -->
+  <section class="card">
+    <div class="pilares-grid">
+      <div class="pilar-block">
+        <h2 class="section-title">Princípios da Crônica</h2>
+        <textarea id="principios" rows="6" placeholder="Descreva os princípios..."></textarea>
+      </div>
+      <div class="pilar-block">
+        <h2 class="section-title">Pilares</h2>
+        <textarea id="pilares" rows="6" placeholder="Liste os pilares..."></textarea>
+      </div>
+      <div class="pilar-block">
+        <h2 class="section-title">Campos de Credo</h2>
+        <textarea id="credo_campos" rows="6" placeholder="Campos do credo..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALIDADES / EQUIPAMENTO / XP / PESSOAL -->
+  <section class="card">
+    <div class="bottom-grid">
+      <div class="qual-col">
+        <h2 class="section-title">Qualidades &amp; Defeitos</h2>
+        <div id="quals-container">
+          <!-- 12 rows por JS -->
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="equip-block">
+          <h2 class="section-title">Equipamento</h2>
+          <div id="equip-container" class="equip-grid">
+            <!-- 14 rows por JS -->
+          </div>
+        </div>
+        <div class="personal-block">
+          <h2 class="section-title">Experiência</h2>
+          <div class="card-row two" style="margin-bottom:1rem">
+            <div class="field"><label>Total</label><input type="number" id="xp_total" min="0" value="0"></div>
+            <div class="field"><label>Gasta</label><input type="number" id="xp_gasta" min="0" value="0"></div>
+          </div>
+          <h2 class="section-title">Dados Pessoais</h2>
+          <div class="field" style="margin-bottom:.5rem"><label>Idade</label><input type="text" id="idade" placeholder="—"></div>
+          <div class="field" style="margin-bottom:.5rem"><label>Data de Nascimento</label><input type="text" id="nascimento" placeholder="—"></div>
+          <div class="field" style="margin-bottom:.5rem"><label>Aparência</label><input type="text" id="aparencia" placeholder="—"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEXTAREA BLOCK -->
+  <section class="card">
+    <div class="text-blocks-grid">
+      <div class="pilar-block">
+        <h2 class="section-title">Características Distintas</h2>
+        <textarea id="caracteristicas" rows="5" placeholder="Marcas, maneirismos, aparência física..."></textarea>
+      </div>
+      <div class="pilar-block">
+        <h2 class="section-title">Notas</h2>
+        <textarea id="notas" rows="5" placeholder="Anotações livres..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="section-title">História</h2>
+    <textarea id="historia" rows="7" placeholder="A história do personagem..."></textarea>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="sheet-footer">
+    <span>© 2022 Paradox Interactive</span>
+    <span>Caçador: A Revanche — Ficha de Personagem</span>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
