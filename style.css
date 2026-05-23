@@ -339,6 +339,9 @@ input[type=number]::-webkit-inner-spin-button { display: none; }
   .header-actions .btn { font-size: 11px; padding: 6px 10px; }
 }
 
+/* div-espelho dos textareas: oculta na tela, visivel so na impressao */
+.print-mirror { display: none; }
+
 /* ── BOTÃO IMPRIMIR ── */
 .btn-print {
   background: rgba(232,114,26,0.15);
@@ -426,10 +429,9 @@ input[type=number]::-webkit-inner-spin-button { display: none; }
 
   label { color: #888 !important; font-size: 9px !important; }
 
-  /* inputs e textareas: transparentes, altura automática, sem corte */
+  /* inputs simples: linha discreta */
   input[type=text],
-  input[type=number],
-  textarea {
+  input[type=number] {
     background: transparent !important;
     border: none !important;
     border-bottom: 0.5px solid #bbb !important;
@@ -437,12 +439,23 @@ input[type=number]::-webkit-inner-spin-button { display: none; }
     color: #111 !important;
     font-size: 11px !important;
     padding: 2px 4px !important;
-    /* expande para mostrar todo o conteúdo — JS seta height via scrollHeight */
-    height: auto !important;
-    min-height: 0 !important;
-    overflow: visible !important;
-    white-space: pre-wrap !important;
-    word-break: break-word !important;
+  }
+
+  /* textarea original: esconder na impressao */
+  textarea { display: none !important; }
+
+  /* div-espelho: mostrar no lugar do textarea */
+  .print-mirror {
+    display: block !important;
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    color: #111;
+    white-space: pre-wrap;
+    word-break: break-word;
+    border-bottom: 0.5px solid #bbb;
+    padding: 2px 4px;
+    min-height: 14px;
+    line-height: 1.5;
   }
 
   /* dots: círculos com cor sólida */

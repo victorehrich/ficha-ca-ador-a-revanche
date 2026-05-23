@@ -339,31 +339,30 @@ function init() {
     window.print();
   });
 
-  /* Antes de imprimir: expandir todos os textareas para mostrar conteúdo completo */
-  window.addEventListener('beforeprint', expandForPrint);
-  window.addEventListener('afterprint', collapseAfterPrint);
+  /* Antes de imprimir: criar divs-espelho para cada textarea */
+  window.addEventListener('beforeprint', injectPrintMirrors);
+  window.addEventListener('afterprint', removePrintMirrors);
 
   /* carregar ficha salva ao abrir */
   loadFromLS();
 }
 
-const _printOriginalHeights = new Map();
-
-function expandForPrint() {
-  document.querySelectorAll('textarea').forEach(el => {
-    _printOriginalHeights.set(el, el.style.height);
-    el.style.height = 'auto';
-    el.style.height = el.scrollHeight + 'px';
-    el.style.overflow = 'visible';
+/* Cria uma <div class="print-mirror"> logo apos cada textarea
+   com o conteudo completo do campo. O CSS esconde o textarea
+   e mostra a div na impressao, sem restricao de altura. */
+function injectPrintMirrors() {
+  document.querySelectorAll('textarea').forEach(ta => {
+    if (ta.nextSibling && ta.nextSibling.classList &&
+        ta.nextSibling.classList.contains('print-mirror')) return;
+    const mirror = document.createElement('div');
+    mirror.className = 'print-mirror';
+    mirror.textContent = ta.value;
+    ta.parentNode.insertBefore(mirror, ta.nextSibling);
   });
 }
 
-function collapseAfterPrint() {
-  document.querySelectorAll('textarea').forEach(el => {
-    el.style.height = _printOriginalHeights.get(el) || '';
-    el.style.overflow = '';
-  });
-  _printOriginalHeights.clear();
+function removePrintMirrors() {
+  document.querySelectorAll('.print-mirror').forEach(el => el.remove());
 }
 
 document.addEventListener('DOMContentLoaded', init);
