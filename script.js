@@ -335,6 +335,10 @@ function init() {
     e.target.value = ''; /* reset para permitir importar o mesmo arquivo novamente */
   });
 
+  document.getElementById('btn-print').addEventListener('click', () => {
+    window.print();
+  });
+
   /* tentar carregar do localStorage ao abrir */
   loadFromLS();
 }
